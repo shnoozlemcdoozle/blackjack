@@ -6,7 +6,8 @@ window.onload = function(){
   var deck = ['A', '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K',
     'A', '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A', '2',
     '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A', '2', '3', '4',
-    '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K'];
+    '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K'
+  ];
 
   /* Shuffles deck */
   function shuffleDeck(deck) {
@@ -61,6 +62,7 @@ window.onload = function(){
     }
     return Number(firstCard) + Number(secondCard);
   }
+
   $('#text3').append('Your sum: ' + userHand.reduce(sumUserHand));
 
   /* Replaces face cards with a value of ten in dealers hand and returns a sum*/
@@ -89,15 +91,18 @@ window.onload = function(){
     }
     return Number(thirdCard) + Number(fourthCard)
   }
+
   /* User has blackjack */
   if (userHand.reduce(sumUserHand) == 21) {
     $('#text7').empty().append('Blackjack! You win!');
   }
+
   /* Dealer has blackjack */
   if (dealerHand.reduce(sumDealerHand) == 21) {
     $('#text2').empty().append('Dealer hand: ' + dealerHand);
     $('#text7').empty().append('Dealer has Blackjack! You lose!');
   }
+
   var aceIndex = userHand.indexOf('A');
   var aceIndexDealer = dealerHand.indexOf('A');
 
@@ -112,51 +117,53 @@ window.onload = function(){
       userHand.push('1');
       $('#text1').empty().append('Your hand: ' + userHand);
       $('#text3').empty().append('Your sum: ' + userHand.reduce(sumUserHand));
-     	aceIndex = -1;
-    }
-    else if ((userHand.reduce(sumUserHand) > 21) && (userHand.indexOf('A') == -1)) {
+      aceIndex = -1;
+    } else if ((userHand.reduce(sumUserHand) > 21) && (userHand.indexOf('A') == -1)) {
       $('#text1').empty().append('Your hand: ' + userHand);
       $('#text3').empty().append('Bust');
     }
   }
+
   /* User stand button - Adds cards to dealer hand until dealer's sum is over 16, determines if dealer busted and compares scores between user and dealer to decide who wins */
   document.getElementById("standoptionbtn").onclick = function() {
     $('#text4').append('Your sum: ' + userHand.reduce(sumUserHand));
     if (dealerHand.reduce(sumDealerHand) >= 17) {
       $('#text5').append('Dealer sum: ' + dealerHand.reduce(sumDealerHand));
       $('#text2').empty().append('Dealer hand: ' + dealerHand);
-    } else if (dealerHand.reduce(sumDealerHand) < 17){
+    } else if (dealerHand.reduce(sumDealerHand) < 17) {
       while (dealerHand.reduce(sumDealerHand) < 17) {
         dealerHand.push(deck.shift());
         $('#text2').empty().append('Dealer hand: ' + dealerHand);
         $('#text5').empty().append('Dealer sum: ' + dealerHand.reduce(sumDealerHand));
         if ((dealerHand.reduce(sumDealerHand) > 21) && (aceIndexDealer >= 0)) {
-      dealerHand.splice(aceIndexDealer, 1);
-      dealerHand.push('1');
-      $('#text2').empty().append('Dealer hand: ' + dealerHand);
-      $('#text5').empty().append('Dealer sum: ' + dealerHand.reduce(sumDealerHand));
-     	aceIndexDealer = -1; }
-      else if ((dealerHand.reduce(sumDealerHand) > 21 && (aceIndexDealer < 0))) {
-      $('#text5').empty().append('Dealer sum: Bust');
-      $('#text7').empty().append('You win!');
-      }}
+          dealerHand.splice(aceIndexDealer, 1);
+          dealerHand.push('1');
+          $('#text2').empty().append('Dealer hand: ' + dealerHand);
+          $('#text5').empty().append('Dealer sum: ' + dealerHand.reduce(sumDealerHand));
+          aceIndexDealer = -1;
+        } else if ((dealerHand.reduce(sumDealerHand) > 21 && (aceIndexDealer < 0))) {
+          $('#text5').empty().append('Dealer sum: Bust');
+          $('#text7').empty().append('You win!');
+        }
+      }
     } else if ((dealerHand.reduce(sumDealerHand) > 21) && (aceIndexDealer >= 0)) {
       dealerHand.splice(aceIndexDealer, 1);
       dealerHand.push('1');
       $('#text2').empty().append('Dealer hand: ' + dealerHand);
       $('#text5').empty().append('Dealer sum: ' + dealerHand.reduce(sumDealerHand));
-     	aceIndexDealer = -1;
+      aceIndexDealer = -1;
       while (dealerHand.reduce(sumDealerHand) < 17) {
         dealerHand.push(deck.shift());
         $('#text2').empty().append('Dealer hand: ' + dealerHand);
         $('#text5').empty().append('Dealer sum: ' + dealerHand.reduce(sumDealerHand));
         if (dealerHand.reduce(sumDealerHand) > 21) {
-      $('#text5').empty().append('Dealer sum: Bust');
-      $('#text7').empty().append('You win!');
-    }
+          $('#text5').empty().append('Dealer sum: Bust');
+          $('#text7').empty().append('You win!');
+        }
 
       }
-    } if ((dealerHand.reduce(sumDealerHand) > 21) && (dealerHand.indexOf('A') == -1)) {
+    }
+    if ((dealerHand.reduce(sumDealerHand) > 21) && (dealerHand.indexOf('A') == -1)) {
       $('#text5').empty().append('Dealer sum: Bust');
       $('#text7').empty().append('You win!');
     }
@@ -171,4 +178,6 @@ window.onload = function(){
 
 
   }
+  $('#title').hover(function(){
+  $('#title2').css("display", "block") },function(){$('#title2').css("display", "none") } )
 }
