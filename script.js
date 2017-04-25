@@ -180,4 +180,8 @@ window.onload = function(){
   }
   $('#title').hover(function(){
   $('#title2').css("display", "block") },function(){$('#title2').css("display", "none") } )
+
+  $('.hvr-buzz').click(function() {
+    location.reload();
+  })
 }
