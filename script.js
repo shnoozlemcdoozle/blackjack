@@ -1,3 +1,7 @@
+
+/* Starts JS after html is loaded */
+window.onload = function(){
+
 /* Sets up deck */
 var deck = ['A', '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K',
  'A', '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A', '2',
@@ -135,4 +139,5 @@ document.getElementById("standoptionbtn").onclick = function() {
   }
 
 
+}
 }
