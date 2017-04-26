@@ -59,7 +59,7 @@ button {
   }
   100% {
     -webkit-transform: translateX(-3px) rotate(-2deg);
-    transform: translateX(-3px) rotate(-2deg);
+    transform: translateX(-3px) rotate(-4deg);
   }
 }
 @keyframes hvr-buzz {
@@ -69,7 +69,7 @@ button {
   }
   100% {
     -webkit-transform: translateX(-3px) rotate(-2deg);
-    transform: translateX(-3px) rotate(-2deg);
+    transform: translateX(-3px) rotate(-4deg);
   }
 }
 .hvr-buzz {
@@ -84,8 +84,8 @@ button {
 .hvr-buzz:hover, .hvr-buzz:focus, .hvr-buzz:active {
   -webkit-animation-name: hvr-buzz;
   animation-name: hvr-buzz;
-  -webkit-animation-duration: 0.15s;
-  animation-duration: 0.15s;
+  -webkit-animation-duration: .2s;
+  animation-duration: .2s;
   -webkit-animation-timing-function: linear;
   animation-timing-function: linear;
   -webkit-animation-iteration-count: infinite;
